@@ -172,5 +172,7 @@ export async function getStaticProps() {
     props: {
       ...homeData
     },
+    revalidate: 5*600
+    // 5 minutes
   };
 }

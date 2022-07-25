@@ -151,5 +151,7 @@ export async function getStaticProps() {
     props: {
       ...galleryData,
     },
+    revalidate: 5*600
+    // 5 minutes
   };
 }
