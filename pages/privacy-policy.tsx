@@ -64,7 +64,7 @@ export async function getStaticProps() {
     props: {
       ...PrivacyPolicyData,
     },
-    revalidate: 5*600
+    revalidate: 5*60
     // 5 minutes
   };
 }
