@@ -60,7 +60,6 @@ export async function getStaticProps() {
       termsOfService
     }`;
   const termsOfServiceData = await client.fetch(termsOfServiceQuery);
-  console.log(termsOfServiceData);
   return {
     props: {
       ...termsOfServiceData,

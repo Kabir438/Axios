@@ -12,16 +12,12 @@ import {
   Box,
   List,
   Link,
-  Stack,
-  Button,
   Drawer,
   Collapse,
   ListItemText,
   ListItemButton,
   ListItemButtonProps,
 } from '@mui/material';
-// routes
-import Routes from '../../routes';
 // config
 import { DRAWER_WIDTH } from '../../config';
 // @types

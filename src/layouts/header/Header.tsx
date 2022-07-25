@@ -16,7 +16,6 @@ import { IconButtonAnimate } from '../../components/animate';
 //
 import { NavMobile, NavDesktop, navConfig } from '../nav';
 import { ToolbarStyle, ToolbarShadowStyle } from './HeaderToolbarStyle';
-import { useEffect } from 'react';
 
 // ----------------------------------------------------------------------
 
@@ -34,10 +33,7 @@ export default function Header({ transparent }: Props) {
   const isLight = theme.palette.mode === 'light';
 
   const isScrolling = useOffSetTop(HEADER_DESKTOP_HEIGHT);
-  
-  useEffect(() => {
-    console.log(isLight)
-  }, [isLight])
+
   return (
     <AppBar sx={{ boxShadow: 0, bgcolor: 'transparent' }}>
       <ToolbarStyle disableGutters transparent={transparent} scrolling={isScrolling}>

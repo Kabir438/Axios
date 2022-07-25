@@ -29,7 +29,6 @@ const RootStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function ElearningAboutUsPage(props: any) {
-  console.log(props)
   return (
     <Page title="About Us - E-Learning">
       <RootStyle>
@@ -117,7 +116,6 @@ export async function getStaticProps() {
      testimonials[]->
   }`;
   const aboutData = await client.fetch(homeQuery);
-  console.log(aboutData);
   return {
     props: {
       ...aboutData,

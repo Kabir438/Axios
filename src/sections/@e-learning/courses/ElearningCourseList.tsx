@@ -13,7 +13,6 @@ type Props = {
 };
 
 export default function ElearningCourseList({ courses }: Props) {
-  console.log(courses)
   return (
     <>
       <Stack spacing={4} mb={5}>

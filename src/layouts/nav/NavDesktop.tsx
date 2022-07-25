@@ -126,7 +126,6 @@ function NavItemDesktop({ item, isScrolling, isTransparent }: NavItemDesktopProp
   };
 
   if (children) {
-    console.log(title)
     return (
       <>
         <RootLinkStyle
@@ -169,7 +168,6 @@ function NavItemDesktop({ item, isScrolling, isTransparent }: NavItemDesktopProp
       </RootLinkStyle>
     );
   }
-  console.log(title)
 
   return (
     <NextLink key={title} href={path} passHref>

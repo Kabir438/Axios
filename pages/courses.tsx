@@ -1,6 +1,6 @@
 import { useState, ReactElement, useEffect, useMemo } from 'react';
 // icons
-import filterIcon from '@iconify/icons-carbon/filter';
+import searchIcon from '@iconify/icons-carbon/search';
 // @mui
 import { styled } from '@mui/material/styles';
 import { Container, Stack, Typography, Button, Box } from '@mui/material';
@@ -31,7 +31,6 @@ const RootStyle = styled('div')(({ theme }) => ({
 export default function ElearningCoursesPage(props: any) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [ search, setSearch ] = useState("");
-  console.log("props", props.courses)
   const [courses] = useState(props.courses);
   const [ courseDisplay, setCourseDisplay ] = useState<CourseProps[]>(courses);
 
@@ -42,17 +41,12 @@ export default function ElearningCoursesPage(props: any) {
     ]
   }), [courses]);
 
-  console.log(props)
-
   useEffect(() => {
     if(search.trim()) {
       const searchResult = fuse.search(search.trimStart());
-      console.log(1, searchResult);
       const temp: any = searchResult.map((i) => i.item)
       setCourseDisplay(temp);
-      console.log("matches", searchResult.map((i) => i.matches));
     } else {
-      console.log(2)
       setCourseDisplay(courses);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -88,13 +82,13 @@ export default function ElearningCoursesPage(props: any) {
             <Button
               color="inherit"
               variant="contained"
-              startIcon={<Iconify icon={filterIcon} sx={{ width: 18, height: 18 }} />}
+              startIcon={<Iconify icon={searchIcon} sx={{ width: 18, height: 18 }} />}
               onClick={handleMobileOpen}
               sx={{
                 display: { md: 'none' },
               }}
             >
-              Filters
+              Search
             </Button>
           </Stack>
 
@@ -137,7 +131,6 @@ export async function getStaticProps() {
     }
   }`;
   const coursesData = await client.fetch(coursesQuery);
-  console.log(coursesData);
   return {
     props: {
       ...coursesData,

@@ -60,7 +60,6 @@ export async function getStaticProps() {
       privacyPolicy
     }`;
   const PrivacyPolicyData = await client.fetch(PrivacyPolicyQuery);
-  console.log(PrivacyPolicyData);
   return {
     props: {
       ...PrivacyPolicyData,

@@ -3,8 +3,6 @@ import { ReactElement } from 'react';
 import { styled } from '@mui/material/styles';
 // config
 import { HEADER_MOBILE_HEIGHT, HEADER_DESKTOP_HEIGHT } from '../src/config';
-// hooks
-import { useRequest } from '../src/hooks';
 // @types
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 // layouts
@@ -61,13 +59,9 @@ export type data = {
 // ----------------------------------------------------------------------
 
 export default function ElearningLandingPage(props: any) {
-  const { data: courses = [], error } = useRequest('/api/e-learning/courses');
-  console.log(courses)
-  if (error) {
+  if (!props.homePageTitle) {
     return <ErrorScreen />;
   }
-
-  console.log(props);
 
   return (
     <Page title="Landing - E-Learning">
@@ -174,7 +168,6 @@ export async function getStaticProps() {
     testimonials[]->
   }`;
   const homeData = await client.fetch(homeQuery);
-  console.log(homeData);
   return {
     props: {
       ...homeData

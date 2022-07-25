@@ -98,6 +98,7 @@ export default function ElearningCourseItem({ course, vertical }: Props) {
                   </Tooltip>
                   :
                   <Avatar
+                    key={`teacher-${index}`}
                     src={urlFor(teacher.image)}
                     alt={teacher.name}
                     sx={{

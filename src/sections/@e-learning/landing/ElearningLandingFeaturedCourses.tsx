@@ -104,16 +104,16 @@ export default function ElearningLandingFeaturedCourses({ courses, coursesTitle,
             }}
           >
             <Slider ref={carouselRef} {...carouselSettings}>
-              {courses.map((course) => (
+              {courses.map((course, index) => (
                 <Box
-                  key={course._id}
+                  key={`${course._id}-${index}`}
                   sx={{
                     px: 2,
                     pt: { xs: 8, md: 10 },
                     pb: { xs: 8, md: 15 },
                   }}
                 >
-                  <ElearningCourseItem course={course} vertical />
+                  <ElearningCourseItem key={course._id} course={course} vertical />
                 </Box>
               ))}
             </Slider>

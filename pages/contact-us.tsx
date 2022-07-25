@@ -23,7 +23,6 @@ const RootStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function ElearningContactUsPage(props: any) {
-  console.log(props)
   return (
     <Page title="Contact Us - E-Learning">
       <RootStyle>
@@ -79,7 +78,6 @@ export async function getStaticProps() {
     contactBody
   }`;
   const contactUsData = await client.fetch(contactUsQuery);
-  console.log(contactUsData);
   return {
     props: {
       ...contactUsData,
