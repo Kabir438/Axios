@@ -20,15 +20,14 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <meta charSet="utf-8" />
-          <meta name="theme-color" content={palette.light.primary.main} />
+          <meta name="theme-color" content={`#6d01ff`} />
           <meta
             name="description"
             content="Axios Career Academy"
           />
           <meta
-
             name="keywords"
-            content="react,material,kit,application,landing & corporate,template"
+            content="JEE, NEET, academy, career, IGCSE, IBDP, A and AS levels"
           />
           <meta name="author" content="Axios Career Academy" />
 
