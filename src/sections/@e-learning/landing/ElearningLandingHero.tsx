@@ -37,11 +37,26 @@ export default function ElearningLandingHero({
     <>
       <RootStyle>
         <Container>
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={6} lg={5}>
+          <Grid sx={{
+            flexDirection: {
+              xs: 'column-reverse', 
+              sm: "column-reverse", 
+              md: 'column-reverse', 
+              lg: "row", 
+              xl: "row" 
+            },
+            alignItems: {
+              xs: 'center', 
+              sm: "center", 
+              md: 'center', 
+              lg: "start", 
+              xl: "start" 
+            }
+          }} container spacing={3}>
+            <Grid item xs={12} md={12} lg={5}>
               <Stack
                 sx={{
-                  textAlign: { xs: 'center', md: 'unset' },
+                  textAlign: { xs: 'center', lg: 'unset' },
                 }}
               >
                 {
@@ -94,7 +109,14 @@ export default function ElearningLandingHero({
               </Stack>
             </Grid>
 
-            <Grid item xs={12} md={6} lg={7} sx={{ display: { xs: 'none', md: 'block' } }}>
+            <Grid item xs={12} md={12} lg={7} sx={{ 
+              display: "block",
+              transform: {
+                lg: "unset",
+                sm: "scale(0.85) translateX(-15vw)",
+                xs: "scale(0.55) translateX(-27.5vw)"
+              }
+            }}>
               <ElearningHeroIllustration
                 data={{
                   homePageMainImage: pageData.homePageMainImage,
