@@ -5,17 +5,17 @@ import filterIcon from '@iconify/icons-carbon/filter';
 import { styled } from '@mui/material/styles';
 import { Container, Stack, Typography, Button, Box } from '@mui/material';
 // config
-import { HEADER_MOBILE_HEIGHT, HEADER_DESKTOP_HEIGHT, DRAWER_WIDTH } from '../../src/config';
+import { HEADER_MOBILE_HEIGHT, HEADER_DESKTOP_HEIGHT, DRAWER_WIDTH } from '../src/config';
 // layouts
-import Layout from '../../src/layouts';
+import Layout from '../src/layouts';
 // components
-import { Page, ErrorScreen, Iconify } from '../../src/components';
+import { Page, ErrorScreen, Iconify } from '../src/components';
 // sections
-import { ElearningCourseList, ElearningCourseBarFilters } from '../../src/sections/@e-learning';
+import { ElearningCourseList, ElearningCourseBarFilters } from '../src/sections/@e-learning';
 // search
 import Fuse from "fuse.js"
-import client from '../../src/utils/sanity';
-import { CourseProps } from '../../src/@types/e-learning';
+import client from '../src/utils/sanity';
+import { CourseProps } from '../src/@types/e-learning';
 
 // ----------------------------------------------------------------------
 
