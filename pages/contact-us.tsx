@@ -24,7 +24,7 @@ const RootStyle = styled('div')(({ theme }) => ({
 
 export default function ElearningContactUsPage(props: any) {
   return (
-    <Page title="Contact Us - E-Learning">
+    <Page title="Contact Us | Axios Career Academy">
       <RootStyle>
         <ElearningContactInfo
           {

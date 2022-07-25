@@ -30,7 +30,7 @@ const RootStyle = styled('div')(({ theme }) => ({
 
 export default function ElearningAboutUsPage(props: any) {
   return (
-    <Page title="About Us - E-Learning">
+    <Page title="About Us | Axios Career Academy">
       <RootStyle>
         <ElearningAboutHero 
           {

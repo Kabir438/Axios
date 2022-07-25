@@ -4,7 +4,7 @@ const nextConfig = {
   trailingSlash: true,
   env: {
     DEV_API: 'http://localhost:8888',
-    PRODUCTION_API: 'https://zone-assets-api.vercel.app',
+    PRODUCTION_API: 'https://axioscareeracademy.vercel.app',
     GOOGLE_API: '',
   },
   images: {

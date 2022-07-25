@@ -32,7 +32,7 @@ function Logo({ onDark = false, isSimple = false, sx }: LogoProps) {
         }}
       >
         <img
-          src={`https://axioscareeracademy.com/static/media/logomain.4a9fd405.png`}
+          src={`/logo.png`}
           alt={`logo`}
           width={223/5}
           height={255/5}

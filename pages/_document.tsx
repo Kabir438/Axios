@@ -23,14 +23,14 @@ export default class MyDocument extends Document {
           <meta name="theme-color" content={palette.light.primary.main} />
           <meta
             name="description"
-            content="The ZONE is built on top of MUI, a powerful library that provides flexible, customizable, and easy-to-use components. "
+            content="Axios Career Academy"
           />
           <meta
 
             name="keywords"
             content="react,material,kit,application,landing & corporate,template"
           />
-          <meta name="author" content="ZONE UI Kit" />
+          <meta name="author" content="Axios Career Academy" />
 
           <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
           <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />

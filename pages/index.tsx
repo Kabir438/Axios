@@ -60,11 +60,15 @@ export type data = {
 
 export default function ElearningLandingPage(props: any) {
   if (!props.homePageTitle) {
-    return <ErrorScreen />;
+    return (
+      <Page title="Error - Axios Career Academy">
+        <ErrorScreen />
+      </Page>
+    );
   }
 
   return (
-    <Page title="Landing - E-Learning">
+    <Page title="Axios Career Academy">
       <RootStyle>
         <ElearningLandingHero
           pageData={{

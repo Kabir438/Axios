@@ -51,7 +51,7 @@ export default function cssStyles(theme?: Theme) {
       };
     },
     bgImage: (props?: BackgroundImageProps) => {
-      const url = props?.url || 'https://zone-assets-api.vercel.app/assets/bg_gradient.jpg';
+      const url = props?.url || '/bg_gradient.jpg';
       const direction = getDirection(props?.direction);
       const startColor = props?.startColor || alpha(theme?.palette.grey[900] || '#000000', 0.88);
       const endColor = props?.endColor || alpha(theme?.palette.grey[900] || '#000000', 0.88);

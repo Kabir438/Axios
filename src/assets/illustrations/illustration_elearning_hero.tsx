@@ -86,7 +86,7 @@ function ElearningHeroIllustration({ data, ...other }: Props) {
       >
         <Image
           alt="book icon"
-          src="https://zone-assets-api.vercel.app/assets/icons/ic_book.png"
+          src="/book.png"
           sx={{ width: 52, height: 62 }}
         />
       </Box>
@@ -98,7 +98,7 @@ function ElearningHeroIllustration({ data, ...other }: Props) {
       >
         <Image
           alt="pencil icon"
-          src="https://zone-assets-api.vercel.app/assets/icons/ic_pencil.png"
+          src="/pencil.png"
           sx={{ width: 60, height: 77 }}
         />
       </Box>

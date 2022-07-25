@@ -24,6 +24,5 @@ export { default as LoadingScreen } from './LoadingScreen';
 export { default as SocialsButton } from './SocialsButton';
 export { default as TextIconLabel } from './TextIconLabel';
 export { default as CountUpNumber } from './CountUpNumber';
-export { default as AppStoreButton } from './AppStoreButton';
 export { default as FavoriteButton } from './FavoriteButton';
 export { default as SearchNotFound } from './SearchNotFound';

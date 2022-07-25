@@ -44,7 +44,7 @@ export default function Page500() {
             <m.div variants={varBounce().in}>
               <Image
                 alt="500"
-                src="https://zone-assets-api.vercel.app/assets/illustrations/illustration_500.svg"
+                src="/500.svg"
                 sx={{
                   maxWidth: 320,
                   my: { xs: 6, sm: 8 },

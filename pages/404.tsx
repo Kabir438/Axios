@@ -45,7 +45,7 @@ export default function PageNotFound() {
             <m.div variants={varBounce().in}>
               <Image
                 alt="404"
-                src="https://zone-assets-api.vercel.app/assets/illustrations/illustration_404.svg"
+                src="/404.svg"
                 sx={{ maxWidth: 320, my: { xs: 6, sm: 8 } }}
               />
             </m.div>

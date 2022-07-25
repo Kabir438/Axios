@@ -65,7 +65,7 @@ export default function ElearningCoursesPage(props: any) {
   }
 
   return (
-    <Page title="Courses - Elearning">
+    <Page title="Courses | Axios Career Academy">
       <RootStyle>
         <Container>
           <Stack
