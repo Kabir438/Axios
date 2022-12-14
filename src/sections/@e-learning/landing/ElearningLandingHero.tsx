@@ -1,16 +1,16 @@
 // icons
-import chevronRight from '@iconify/icons-carbon/chevron-right';
 // @mui
 import { styled } from '@mui/material/styles';
-import { Typography, Stack, Container, Box, Grid, Divider, Button } from '@mui/material';
+import { Typography, Stack, Container, Box, Grid } from '@mui/material';
 // theme
 import { ColorSchema } from '../../../theme/palette';
 // assets
 import { ElearningHeroIllustration } from '../../../assets';
 // components
-import { Iconify } from '../../../components';
 
-import { data } from "../../../../pages/index"
+import { data } from '../../../../pages/index';
+import Link from 'next/link';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 // ----------------------------------------------------------------------
 
@@ -28,40 +28,63 @@ const RootStyle = styled(Stack)(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function ElearningLandingHero({
-  pageData
-}: {
-  pageData: data
-}) {
+const scaleImage = (
+  setScale: Dispatch<SetStateAction<number>>,
+  setHeight: Dispatch<SetStateAction<number | null>>
+) => {
+  // lets say = 500
+  const windowWidth = window.innerWidth;
+  if (windowWidth < 790) {
+    // lets say = 600
+    const constWidth = 694;
+    // lets say = 440
+    const fit = windowWidth - 60;
+    setScale(fit / constWidth);
+    setHeight(fit);
+  } else setScale(1);
+};
+
+export default function ElearningLandingHero({ pageData }: { pageData: data }) {
+  const [scale, setScale] = useState<number>(1);
+  const [height, setHeight] = useState<number | null>(null);
+  useEffect(() => {
+    scaleImage(setScale, setHeight);
+    window.addEventListener('resize', () => scaleImage(setScale, setHeight));
+  }, []);
   return (
     <>
       <RootStyle>
         <Container>
-          <Grid sx={{
-            flexDirection: {
-              xs: 'column-reverse', 
-              sm: "column-reverse", 
-              md: 'column-reverse', 
-              lg: "row", 
-              xl: "row" 
-            },
-            alignItems: {
-              xs: 'center', 
-              sm: "center", 
-              md: 'center', 
-              lg: "start", 
-              xl: "start" 
-            }
-          }} container spacing={3}>
+          <Grid
+            sx={{
+              flexDirection: {
+                xs: 'column-reverse',
+                sm: 'column-reverse',
+                md: 'column-reverse',
+                lg: 'row',
+                xl: 'row',
+              },
+              alignItems: {
+                xs: 'center',
+                sm: 'center',
+                md: 'center',
+                lg: 'start',
+                xl: 'start',
+              },
+            }}
+            container
+            spacing={3}
+          >
             <Grid item xs={12} md={12} lg={5}>
+              <br />
+              <br />
+              <br />
               <Stack
                 sx={{
                   textAlign: { xs: 'center', lg: 'unset' },
                 }}
               >
-                {
-                  pageData.homePageTitle === "Online and Offline Classes From The Experts"
-                  ?
+                {pageData.homePageTitle === 'Online and Offline Classes From The Experts' ? (
                   <Typography variant="h1">
                     <Box component="span" sx={{ color: 'text.disabled' }}>
                       {' '}
@@ -72,32 +95,27 @@ export default function ElearningLandingHero({
                       {' '}
                       Offline{' '}
                     </Box>
-                    <Box component="span" sx={{ color: 'primary.main', textDecoration: 'underline' }}>
-                      Classes{' '}
-                    </Box>
+                    <Link href={`/courses`}>
+                      <Box
+                        component="span"
+                        sx={{
+                          color: 'primary.main',
+                          textDecoration: 'underline',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        Classes{' '}
+                      </Box>
+                    </Link>
                     From The Experts
                   </Typography>
-                  :
-                  <Typography variant="h1">
-                    {pageData.homePageTitle}
-                  </Typography>
-                }
+                ) : (
+                  <Typography variant="h1">{pageData.homePageTitle}</Typography>
+                )}
 
                 <Typography sx={{ color: 'text.secondary', mt: 3, mb: 5 }}>
                   {pageData.homePageSubtitle}
                 </Typography>
-
-                <Stack spacing={3} alignItems="center" direction={{ xs: 'column', md: 'row' }}>
-                  <Button
-                    size="large"
-                    variant="contained"
-                    endIcon={<Iconify icon={chevronRight} />}
-                  >
-                    Start
-                  </Button>
-                </Stack>
-
-                <Divider sx={{ borderStyle: 'dashed', mt: 8, mb: 6 }} />
 
                 <SummarySection
                   data={{
@@ -109,22 +127,28 @@ export default function ElearningLandingHero({
               </Stack>
             </Grid>
 
-            <Grid item xs={12} md={12} lg={7} sx={{ 
-              display: "block",
-              transform: {
-                lg: "unset",
-                sm: "scale(0.85) translateX(-15vw)",
-                xs: "scale(0.55) translateX(-27.5vw)"
-              }
-            }}>
+            <Grid
+              item
+              xs={12}
+              md={12}
+              lg={7}
+              style={{
+                scale: `${scale}`,
+                maxHeight: height ? height : undefined,
+              }}
+            >
               <ElearningHeroIllustration
+                sx={{
+                  transform: height ? 'translateX(-50%)' : undefined,
+                  left: height ? '50%' : undefined,
+                }}
                 data={{
                   homePageMainImage: pageData.homePageMainImage,
                   homePageIllustrationGreenText: pageData.homePageIllustrationGreenText,
                   homePageIllustrationPurpleText: pageData.homePageIllustrationPurpleText,
                   homePageIllustrationBlueText: pageData.homePageIllustrationBlueText,
                   homePageIllustrationYellowText: pageData.homePageIllustrationYellowText,
-                  homePageIllustrationWhiteText: pageData.homePageIllustrationWhiteText
+                  homePageIllustrationWhiteText: pageData.homePageIllustrationWhiteText,
                 }}
               />
             </Grid>
@@ -138,13 +162,13 @@ export default function ElearningLandingHero({
 // ----------------------------------------------------------------------
 
 function SummarySection({
-  data
+  data,
 }: {
   data: {
-    learners: string,
-    numberOfCourses: string,
-    graduates: string,
-  }
+    learners: string;
+    numberOfCourses: string;
+    graduates: string;
+  };
 }) {
   return (
     <Stack
@@ -175,17 +199,10 @@ function SummaryItem(total: string | number, label: string, color: ColorSchema) 
           bgcolor: (theme) => theme.palette[color].main,
         }}
       />
-      <Typography variant="h3">{total}{
-        typeof total === 'string'
-        ?
-          total.charAt(total.length - 1) === "+"
-          ?
-          ""
-          :
-          "+"
-        :
-        "+"
-      }</Typography>
+      <Typography variant="h3">
+        {total}
+        {typeof total === 'string' ? (total.charAt(total.length - 1) === '+' ? '' : '+') : '+'}
+      </Typography>
       <Typography variant="body2" sx={{ color: 'text.secondary' }}>
         {label}
       </Typography>
