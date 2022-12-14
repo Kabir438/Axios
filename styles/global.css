@@ -1,0 +1,30 @@
+@media only screen and (max-width: 790px) {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  body::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  body {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+.player-wrapper:hover .player-overlay {
+    opacity: 1;
+    transition: 0.5s opacity ease;
+}
+
+.player-wrapper .player-overlay {
+    opacity: 0;
+    transition: 0.25s opacity ease;
+}
+
+.player-button:hover {
+  filter: brightness(0.9)
+}
+
+.player-button:active {
+  filter: brightness(0.8)
+}
