@@ -12,7 +12,7 @@ type Props = {
 };
 
 export default function TeamElearningMember({ member }: Props) {
-  const { name, role, degree, alumni, image, facebookHandle, instagramHandle, linkedinHandle, twitterHandle } = member;
+  const { name, role, degree, alumni, image, facebookHandle, instagramHandle, linkedinHandle, twitterHandle, googleBusinessHandle } = member;
 
   return (
     <Card>
@@ -53,7 +53,8 @@ export default function TeamElearningMember({ member }: Props) {
               facebook: facebookHandle ?? undefined,
               instagram: instagramHandle ?? undefined,
               linkedin: linkedinHandle ?? undefined,
-              twitter: twitterHandle ?? undefined
+              twitter: twitterHandle ?? undefined,
+              googleBusiness: googleBusinessHandle ?? undefined
             }} />
           </Box>
         </BgOverlay>
