@@ -26,6 +26,8 @@ export default function ElearningLandingIntroduce({
     secondBody: string;
     secondPointer1: string;
     secondPointer2: string;
+    secondPointer3: string;
+    secondPointer4: string;
   };
 }) {
   return (
@@ -70,6 +72,25 @@ export default function ElearningLandingIntroduce({
                 <Box sx={{ width: 24, height: 3, bgcolor: 'primary.main' }} />
                 <Typography sx={{ color: 'text.secondary' }}>
                   {data.secondPointer2}
+                </Typography>
+              </Stack>
+            </Stack>
+            <Stack
+              direction={{ xs: 'column', md: 'row' }}
+              spacing={{ xs: 5, md: 10 }}
+              sx={{ mt: { xs: 8, md: 10 } }}
+            >
+              <Stack spacing={3}>
+                <Box sx={{ width: 24, height: 3, bgcolor: 'primary.main' }} />
+                <Typography sx={{ color: 'text.secondary' }}>
+                  {data.secondPointer3}
+                </Typography>
+              </Stack>
+
+              <Stack spacing={3}>
+                <Box sx={{ width: 24, height: 3, bgcolor: 'primary.main' }} />
+                <Typography sx={{ color: 'text.secondary' }}>
+                  {data.secondPointer4}
                 </Typography>
               </Stack>
             </Stack>
