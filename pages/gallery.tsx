@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from 'react';
+import { ReactElement, useState } from 'react';
 // @mui
 import { styled } from '@mui/material/styles';
 // config
@@ -10,7 +10,6 @@ import { Page, Player } from '../src/components';
 import { ImageList, ImageListItem, Typography } from '@mui/material';
 import { Image } from '../src/components';
 import client from '../src/utils/sanity';
-import ReactPlayer from 'react-player';
 import { Icon } from '@iconify/react';
 import playIcon from '@iconify/icons-carbon/pause-filled';
 import pauseIcon from '@iconify/icons-carbon/play-filled-alt';

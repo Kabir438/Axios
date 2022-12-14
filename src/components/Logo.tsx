@@ -2,7 +2,6 @@ import { memo } from 'react';
 // next
 import NextLink from 'next/link';
 // @mui
-import { useTheme } from '@mui/material/styles';
 import { Box, BoxProps, Typography } from '@mui/material';
 import useMediaQuery from "@mui/material/useMediaQuery";
 
@@ -15,7 +14,7 @@ interface LogoProps extends BoxProps {
 }
 
 
-function Logo({ onDark = false, isSimple = false, columnResponsive, sx }: LogoProps) {
+function Logo({ columnResponsive, sx }: LogoProps) {
   const smallText = useMediaQuery('(max-width:413px)');
   const smallerText = useMediaQuery('(max-width:380px)');
   const noText = useMediaQuery('(max-width:340px)');
