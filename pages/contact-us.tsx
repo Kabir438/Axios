@@ -38,6 +38,7 @@ export default function ElearningContactUsPage(props: any) {
               instagramLink: props.instagramLink, 
               linkedInLink: props.linkedInLink, 
               twitterLink: props.twitterLink, 
+              googleBusinessLink: props.googleBusinessLink
             }
           }
         />
@@ -72,7 +73,8 @@ export async function getStaticProps() {
     facebookLink, 
     instagramLink, 
     linkedInLink, 
-    twitterLink, 
+    twitterLink,  
+    googleBusinessLink, 
     contactImage, 
     contactTitle, 
     contactBody
