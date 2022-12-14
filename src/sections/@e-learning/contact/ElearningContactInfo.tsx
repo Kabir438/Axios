@@ -34,6 +34,7 @@ export default function ElearningContactInfo({
   instagramLink, 
   linkedInLink, 
   twitterLink, 
+  googleBusinessLink, 
 }: {
   contactUsTitle: string,
   email: string,
@@ -49,6 +50,7 @@ export default function ElearningContactInfo({
   instagramLink: string | null, 
   linkedInLink: string | null, 
   twitterLink: string | null, 
+  googleBusinessLink: string | null, 
 }) {
   return (
     <RootStyle>
@@ -112,6 +114,7 @@ export default function ElearningContactInfo({
                     instagram: instagramLink ?? undefined,
                     linkedin: linkedInLink ?? undefined,
                     twitter: twitterLink ?? undefined,
+                    googleBusiness: googleBusinessLink ?? undefined
                   }}
                   sx={{ color: 'text.primary' }}
                 />
