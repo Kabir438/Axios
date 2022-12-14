@@ -5,4 +5,5 @@ export type SocialLinks = {
   instagram?: string;
   linkedin?: string;
   twitter?: string;
+  googleBusiness?: string;
 };
