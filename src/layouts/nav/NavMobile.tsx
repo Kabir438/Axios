@@ -52,7 +52,8 @@ const RootLinkStyle = styled(ListItemButton, {
 
 export default function NavMobile({ navConfig, sx }: NavProps) {
   const { pathname } = useRouter();
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  // const [drawerOpen, setDrawerOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(true);
 
   useEffect(() => {
     if (drawerOpen) {
@@ -74,18 +75,17 @@ export default function NavMobile({ navConfig, sx }: NavProps) {
       <IconButtonAnimate color="inherit" onClick={handleDrawerOpen} sx={sx}>
         <Iconify icon={menuIcon} />
       </IconButtonAnimate>
-
       <Drawer
         open={drawerOpen}
         onClose={handleDrawerClose}
         ModalProps={{ keepMounted: true }}
         PaperProps={{
-          sx: { width: DRAWER_WIDTH },
+          sx: { width: DRAWER_WIDTH, maxWidth: "80vw" },
         }}
       >
         <Scrollbar>
           <Box sx={{ px: 2.5, py: 3, lineHeight: 0 }}>
-            <Logo />
+            <Logo columnResponsive />
           </Box>
 
           <List sx={{ px: 0 }}>
