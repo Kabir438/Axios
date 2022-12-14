@@ -93,6 +93,8 @@ export default function ElearningLandingPage(props: any) {
             secondBody: props.secondBody,
             secondPointer1: props.secondPointer1,
             secondPointer2: props.secondPointer2,
+            secondPointer3: props.secondPointer3 || "0",
+            secondPointer4: props.secondPointer4 || "0",
           }}
         />
 
@@ -121,6 +123,7 @@ export type teacher = {
   instagramHandle: string | null;
   linkedinHandle: string | null;
   twitterHandle: string | null;
+  googleBusinessHandle: string | null;
   _id: string;
 }
 
@@ -151,6 +154,8 @@ export async function getStaticProps() {
     secondBody,
     secondPointer1,
     secondPointer2,
+    secondPointer3,
+    secondPointer4,
     teachersTitle,
     teachersBody,
     teachers[]->,
