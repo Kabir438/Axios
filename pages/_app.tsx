@@ -35,7 +35,7 @@ import RtlLayout from '../src/components/RtlLayout';
 import ProgressBar from '../src/components/ProgressBar';
 import ThemeColorPresets from '../src/components/ThemeColorPresets';
 import MotionLazyContainer from '../src/components/animate/MotionLazyContainer';
-
+import "../styles/global.css"
 // ----------------------------------------------------------------------
 
 type NextPageWithLayout = NextPage & {
