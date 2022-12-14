@@ -12,7 +12,12 @@ const client = sanityClient({
 });
 
 export const builder = imageUrlBuilder(client);
-export function urlFor(source: SanityImageSource) {
+export function urlFor(source: SanityImageSource, video?: boolean) {
+  if(video) {
+    console.log(builder, "source.toString()")
+    return source.toString()
+    // builder.url(sou)
+  }
   return builder.image(source).url()
 }
 
