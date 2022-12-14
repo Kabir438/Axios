@@ -69,8 +69,11 @@ function ElearningHeroIllustration({ data, ...other }: Props) {
   const PURPLE = '#9B3AB1';
 
   return (
+    // big box
     <RootStyle {...other}>
+      {/* second box */}
       <Box sx={{ position: 'absolute', right: 18, bottom: 28, zIndex: 8 }}>
+        {/* third and fourth box + img */}
         <Image
           placeholderSrc=""
           alt="teacher"
