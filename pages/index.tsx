@@ -18,7 +18,8 @@ import {
   ElearningLandingFeaturedCourses,
   HighestAchievers
 } from '../src/sections/@e-learning';
-import client from '../src/utils/sanity';
+import client, { urlFor } from '../src/utils/sanity';
+import SEO from '../src/components/SEO';
 
 // ----------------------------------------------------------------------
 
@@ -69,6 +70,19 @@ export default function ElearningLandingPage(props: any) {
 
   return (
     <Page title="Axios Career Academy">
+      <SEO
+        {
+          ...{
+            title: props.SEOTitle,
+            description: props.SEODescription,
+            imageURL: props.SEOImage && urlFor(props.SEOImage),
+            url: props.SEOURL,
+            twitterCreatorId: props.twitterCreatorId,
+            keywords: props.SEOKeywords,
+            googleSiteVerificationId: props.googleSiteVerificationId
+          }
+        }
+      />
       <RootStyle>
         <ElearningLandingHero
           pageData={{
@@ -174,9 +188,17 @@ export async function getStaticProps() {
       }
     },
     testimonialsTitle,
-    testimonials[]->
+    testimonials[]->,
+    SEOTitle,
+    SEODescription,
+    SEOImage,
+    SEOURL,
+    twitterCreatorId,
+    SEOKeywords[],
+    googleSiteVerificationId
   }`;
   const homeData = await client.fetch(homeQuery);
+  console.log(homeData)
   return {
     props: {
       ...homeData

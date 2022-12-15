@@ -14,8 +14,9 @@ import { Page, ErrorScreen, Iconify } from '../src/components';
 import { ElearningCourseList, ElearningCourseBarFilters } from '../src/sections/@e-learning';
 // search
 import Fuse from "fuse.js"
-import client from '../src/utils/sanity';
+import client, { urlFor } from '../src/utils/sanity';
 import { CourseProps } from '../src/@types/e-learning';
+import SEO from '../src/components/SEO';
 
 // ----------------------------------------------------------------------
 
@@ -66,6 +67,19 @@ export default function ElearningCoursesPage(props: any) {
 
   return (
     <Page title="Courses | Axios Career Academy">
+      <SEO
+        {
+          ...{
+            title: props.SEOTitle,
+            description: props.SEODescription,
+            imageURL: urlFor(props.SEOImage),
+            url: props.SEOURL,
+            twitterCreatorId: props.twitterCreatorId,
+            keywords: props.SEOKeywords,
+            googleSiteVerificationId: props.googleSiteVerificationId
+          }
+        }
+      />
       <RootStyle>
         <Container>
           <Stack
@@ -128,7 +142,14 @@ export async function getStaticProps() {
       description,
       title,
       teachers[]->,
-    }
+    },
+    SEOTitle,
+    SEODescription,
+    SEOImage,
+    SEOURL,
+    twitterCreatorId,
+    SEOKeywords[],
+    googleSiteVerificationId
   }`;
   const coursesData = await client.fetch(coursesQuery);
   return {

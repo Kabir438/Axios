@@ -13,9 +13,10 @@ import {
   ElearningAbout,
   ElearningAboutCoreValues,
 } from '../src/sections/@e-learning';
-import client from '../src/utils/sanity';
+import client, { urlFor } from '../src/utils/sanity';
 import { TeamElearningAbout } from '../src/sections/team';
 import { TestimonialsElearning } from '../src/sections/testimonials';
+import SEO from '../src/components/SEO';
 
 // ----------------------------------------------------------------------
 
@@ -31,6 +32,19 @@ const RootStyle = styled('div')(({ theme }) => ({
 export default function ElearningAboutUsPage(props: any) {
   return (
     <Page title="About Us | Axios Career Academy">
+      <SEO
+        {
+          ...{
+            title: props.SEOTitle,
+            description: props.SEODescription,
+            imageURL: urlFor(props.SEOImage),
+            url: props.SEOURL,
+            twitterCreatorId: props.twitterCreatorId,
+            keywords: props.SEOKeywords,
+            googleSiteVerificationId: props.googleSiteVerificationId
+          }
+        }
+      />
       <RootStyle>
         <ElearningAboutHero 
           {
@@ -91,7 +105,7 @@ ElearningAboutUsPage.getLayout = function getLayout(page: ReactElement) {
 // ----------------------------------------------------------------------
 
 export async function getStaticProps() {
-  const homeQuery = `*\[_type == "about-us"\][0] {
+  const homeQuery = `*[_type == "about-us"][0] {
      coursesHeaderTitle,
      coursesHeaderBody,
      coursesImage,
@@ -113,7 +127,14 @@ export async function getStaticProps() {
      teachersTitle,
      teachers[]->,
      testimonialsTitle,
-     testimonials[]->
+     testimonials[]->,
+     SEOTitle,
+     SEODescription,
+     SEOImage,
+     SEOURL,
+     twitterCreatorId,
+     SEOKeywords[],
+     googleSiteVerificationId
   }`;
   const aboutData = await client.fetch(homeQuery);
   return {

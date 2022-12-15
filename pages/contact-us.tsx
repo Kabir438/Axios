@@ -9,7 +9,8 @@ import Layout from '../src/layouts';
 import { Page } from '../src/components';
 // sections
 import { ElearningContactInfo, ElearningContactForm } from '../src/sections/@e-learning';
-import client from '../src/utils/sanity';
+import client, { urlFor } from '../src/utils/sanity';
+import SEO from '../src/components/SEO';
 
 // ----------------------------------------------------------------------
 
@@ -25,6 +26,19 @@ const RootStyle = styled('div')(({ theme }) => ({
 export default function ElearningContactUsPage(props: any) {
   return (
     <Page title="Contact Us | Axios Career Academy">
+      <SEO
+        {
+          ...{
+            title: props.SEOTitle,
+            description: props.SEODescription,
+            imageURL: urlFor(props.SEOImage),
+            url: props.SEOURL,
+            twitterCreatorId: props.twitterCreatorId,
+            keywords: props.SEOKeywords,
+            googleSiteVerificationId: props.googleSiteVerificationId
+          }
+        }
+      />
       <RootStyle>
         <ElearningContactInfo
           {
@@ -77,7 +91,14 @@ export async function getStaticProps() {
     googleBusinessLink, 
     contactImage, 
     contactTitle, 
-    contactBody
+    contactBody,
+    SEOTitle,
+    SEODescription,
+    SEOImage,
+    SEOURL,
+    twitterCreatorId,
+    SEOKeywords[],
+    googleSiteVerificationId
   }`;
   const contactUsData = await client.fetch(contactUsQuery);
   return {
