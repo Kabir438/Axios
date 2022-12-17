@@ -59,9 +59,7 @@ export default function ElearningContactUsPage(props: any) {
                 width: '80%',
               }}
             >
-              {galleryPageSection.gallerySectionImages.map((item: any, index: any) => {
-                console.log(item, item._type === 'image');
-                return (
+              {galleryPageSection.gallerySectionImages.map((item: any, index: any) => (
                   <ImageListItem key={`image-list-${0}-item-${index}`}>
                     {item._type === 'image' ? (
                       <Image
@@ -76,8 +74,7 @@ export default function ElearningContactUsPage(props: any) {
                       <PlayerItem url={item.asset.url} />
                     )}
                   </ImageListItem>
-                );
-              })}
+                ))}
             </ImageList>
           </>
         ))}
@@ -124,7 +121,6 @@ export async function getStaticProps() {
 const PlayerItem = ({ url }: { url: string }) => {
   const [play, setPlay] = useState(true);
   const theme = useTheme();
-  console.log(theme)
   return (
     <div
       style={{

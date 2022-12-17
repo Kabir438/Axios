@@ -18,7 +18,6 @@ function Logo({ columnResponsive, sx }: LogoProps) {
   const smallText = useMediaQuery('(max-width:413px)');
   const smallerText = useMediaQuery('(max-width:380px)');
   const noText = useMediaQuery('(max-width:340px)');
-  console.log(columnResponsive)
 
   // const PRIMARY_MAIN = theme.palette.primary.main;
   // const LIGHT_COLOR = theme.palette.common.white;

@@ -51,7 +51,7 @@ export default function MyApp(props: MyAppProps) {
 
   const getLayout = Component.getLayout ?? ((page) => page);
 
-  console.info('[INFO] baseAPI', axios.defaults.baseURL);
+
 
   return (
     <>

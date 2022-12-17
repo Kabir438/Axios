@@ -15,14 +15,6 @@ export default function SEO({
   keywords?: string[];
   googleSiteVerificationId?: string;
 }) {
-  console.log({
-    title,
-    description,
-    imageURL,
-    twitterCreatorId,
-    keywords,
-    googleSiteVerificationId
-  })
   return (
     <Head>
       <meta name="keywords" content={keywords && keywords.map(i => i.trim()).join(", ")}/>

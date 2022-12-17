@@ -198,7 +198,6 @@ export async function getStaticProps() {
     googleSiteVerificationId
   }`;
   const homeData = await client.fetch(homeQuery);
-  console.log(homeData)
   return {
     props: {
       ...homeData
