@@ -1,10 +1,14 @@
 import { styled } from '@mui/material/styles';
 import { HEADER_MOBILE_HEIGHT, HEADER_DESKTOP_HEIGHT } from '../src/config';
 import { Page } from '../src/components';
-import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material';
-import client from '../src/utils/sanity';
+import { Stack, Typography } from '@mui/material';
+import client, { urlFor } from '../src/utils/sanity';
 import chevronDown from '@iconify/icons-carbon/chevron-down';
 import { Icon } from '@iconify/react';
+import { ReactElement, useState } from 'react';
+import Layout from '../src/layouts';
+import SEO from '../src/components/SEO';
+import { Accordion, AccordionSummary, AccordionDetails } from '../src/components/Accordion';
 
 const RootStyle = styled('div')(({ theme }) => ({
   paddingTop: HEADER_MOBILE_HEIGHT,
@@ -15,34 +19,52 @@ const RootStyle = styled('div')(({ theme }) => ({
   [theme.breakpoints.up('md')]: {
     paddingTop: HEADER_DESKTOP_HEIGHT,
   },
+  minHeight: '100vh',
+  height: 'max-content',
+  gap: '4rem',
+  paddingBottom: "5rem"
 }));
 
-const data = [
-  {
-    question: 'Question1',
-    answer: 'Answer1 Answer1 Answer1 Answer1',
-  },
-  {
-    question: 'Question2',
-    answer: 'Answer2 Answer2 Answer2 Answer2',
-  },
-  {
-    question: 'Question3',
-    answer: 'Answer3 Answer3 Answer3 Answer3',
-  },
-];
+type FAQItems = {
+  FAQDescription: string;
+  FAQItemAnswer: string;
+  FAQItemQuestion: string;
+}[]
 
 export default function FAQ(props: any) {
+  const [expanded, setExpanded] = useState<string | false>(false);
+  console.log(props)
+  const handleChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+    setExpanded(isExpanded ? panel : false);
+  };
   return (
     <Page title="FAQ | Axios Career Academy">
+      <SEO
+        {
+          ...{
+            title: props.SEOTitle,
+            description: props.SEODescription,
+            imageURL: urlFor(props.SEOImage),
+            url: props.SEOURL,
+            twitterCreatorId: props.twitterCreatorId,
+            keywords: props.SEOKeywords,
+            googleSiteVerificationId: props.googleSiteVerificationId
+          }
+        }
+      />
       <RootStyle>
         <Typography variant="h1" mt={10} mb={1.5} textAlign={'center'}>
-          {props.title}
+          {props.pageHeading}
         </Typography>
-        <div>
-          {data.map(({ question, answer }, i) => (
-            <Accordion key={`accordion-${i}`} sx={{
-                width: '40rem'
+        <Stack sx={{
+          padding: "0px",
+          display: 'flex',
+          flexDirection: 'column',
+        }}>
+          {(props.FAQItems as FAQItems).map(({ FAQItemQuestion: question, FAQItemAnswer: answer, FAQDescription }, i) => (
+            <Accordion id={`${FAQDescription.replaceAll(" ", "_")}${i}`} key={`accordion-${i}`} expanded={expanded === `panel${i}`} className={expanded === `panel${i - 1}` ? 'next' : ''} onChange={handleChange(`panel${i}`)} sx={{
+                width: '40rem',
+                maxWidth: '80vw'
             }}>
               <AccordionSummary
                 expandIcon={<Icon icon={chevronDown} />}
@@ -56,7 +78,7 @@ export default function FAQ(props: any) {
               </AccordionDetails>
             </Accordion>
           ))}
-        </div>
+        </Stack>
       </RootStyle>
     </Page>
   );
@@ -64,6 +86,7 @@ export default function FAQ(props: any) {
 
 export async function getStaticProps() {
   const FAQQuery = `*[_type == "FAQPage"][0] {
+        pageHeading,
         SEOTitle,
         SEODescription,
         SEOImage,
@@ -87,3 +110,7 @@ export async function getStaticProps() {
     // 5 minutes
   };
 }
+
+FAQ.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
+};

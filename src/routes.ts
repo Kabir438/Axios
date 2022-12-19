@@ -7,6 +7,7 @@ const Routes = {
   about: '/about-us',
   contact: '/contact-us',
   gallery: "/gallery",
+  FAQ: "/FAQ",
   // Common
   loginCover: '/auth/login-cover',
   registerCover: '/auth/register-cover',

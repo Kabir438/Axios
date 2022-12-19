@@ -12,5 +12,6 @@ export const navConfig = [
   { title: 'About', path: Routes.about },
   { title: 'Courses', path: Routes.courses },
   { title: 'Gallery', path: Routes.gallery },
+  { title: 'FAQ', path: Routes.FAQ },
   { title: 'Contact', path: Routes.contact },
 ];

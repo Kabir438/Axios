@@ -28,14 +28,14 @@ import { SettingsProvider } from '../src/contexts/SettingsContext';
 // theme
 import ThemeProvider from '../src/theme';
 // utils
-import axios from '../src/utils/axios';
+import { Scrollbar } from '../src/components';
 // components
 // import Settings from '../src/components/settings';
 import RtlLayout from '../src/components/RtlLayout';
 import ProgressBar from '../src/components/ProgressBar';
 import ThemeColorPresets from '../src/components/ThemeColorPresets';
 import MotionLazyContainer from '../src/components/animate/MotionLazyContainer';
-import "../styles/global.css"
+import '../styles/global.css';
 // ----------------------------------------------------------------------
 
 type NextPageWithLayout = NextPage & {
@@ -51,28 +51,27 @@ export default function MyApp(props: MyAppProps) {
 
   const getLayout = Component.getLayout ?? ((page) => page);
 
-
-
   return (
     <>
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
-
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <SettingsProvider>
-          <ThemeProvider>
-            <ThemeColorPresets>
-              <MotionLazyContainer>
-                <RtlLayout>
-                  <ProgressBar />
-                  {getLayout(<Component {...pageProps} />)}
-                </RtlLayout>
-              </MotionLazyContainer>
-            </ThemeColorPresets>
-          </ThemeProvider>
-        </SettingsProvider>
-      </LocalizationProvider>
+      <Scrollbar>
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <SettingsProvider>
+            <ThemeProvider>
+              <ThemeColorPresets>
+                <MotionLazyContainer>
+                  <RtlLayout>
+                    <ProgressBar />
+                    {getLayout(<Component {...pageProps} />)}
+                  </RtlLayout>
+                </MotionLazyContainer>
+              </ThemeColorPresets>
+            </ThemeProvider>
+          </SettingsProvider>
+        </LocalizationProvider>
+      </Scrollbar>
     </>
   );
 }

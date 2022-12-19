@@ -79,6 +79,8 @@ function ElearningHeroIllustration({ data, ...other }: Props) {
           alt="teacher"
           src={urlFor(data.homePageMainImage)}
           sx={{ width: 546, height: 650 }}
+          disabledEffect
+          loading='eager'
         />
       </Box>
 

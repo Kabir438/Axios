@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 // icons
 import menuIcon from '@iconify/icons-carbon/menu';
-import chevronRight from '@iconify/icons-carbon/chevron-right';
-import chevronDown from '@iconify/icons-carbon/chevron-down';
 // next
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
@@ -11,9 +9,7 @@ import { alpha, styled } from '@mui/material/styles';
 import {
   Box,
   List,
-  Link,
   Drawer,
-  Collapse,
   ListItemText,
   ListItemButton,
   ListItemButtonProps,
@@ -23,7 +19,7 @@ import { DRAWER_WIDTH } from '../../config';
 // @types
 import { NavProps, NavItemMobileProps } from '../../@types/layout';
 // components
-import { Logo, Scrollbar, Iconify, NavSection } from '../../components';
+import { Logo, Scrollbar, Iconify } from '../../components';
 import { IconButtonAnimate } from '../../components/animate';
 
 // ----------------------------------------------------------------------
@@ -34,17 +30,20 @@ interface RootLinkStyleProps extends ListItemButtonProps {
 
 const RootLinkStyle = styled(ListItemButton, {
   shouldForwardProp: (prop) => prop !== 'active',
-})<RootLinkStyleProps>(({ active, theme }) => ({
+})<RootLinkStyleProps>(({ active, theme, selected }) => ({
   ...theme.typography.body2,
   height: 48,
   textTransform: 'capitalize',
   paddingLeft: theme.spacing(2.5),
   paddingRight: theme.spacing(2.5),
-  color: theme.palette.text.secondary,
+  color: theme.palette.text.primary,
   ...(active && {
-    color: theme.palette.primary.main,
+    color: theme.palette.secondary.light,
     fontWeight: theme.typography.fontWeightMedium,
-    backgroundColor: alpha(theme.palette.primary.main, theme.palette.action.selectedOpacity),
+    backgroundColor: alpha(theme.palette.primary.dark, theme.palette.action.selectedOpacity*1.75),
+  }),
+  ...(selected && {
+    color: theme.palette.primary.dark,
   }),
 }));
 
@@ -104,91 +103,8 @@ export default function NavMobile({ navConfig, sx }: NavProps) {
 function NavItemMobile({ item }: NavItemMobileProps) {
   const { pathname } = useRouter();
 
-  const { title, path, children } = item;
-  const rootPath = pathname.split('/')[1];
+  const { title, path } = item;
   const isActiveRoot = pathname === path;
-  const isActiveRootWithChild = pathname.includes(`/${rootPath}/`);
-
-  const [open, setOpen] = useState(isActiveRootWithChild);
-
-  const handleOpen = () => {
-    setOpen(!open);
-  };
-
-  if (children) {
-    return (
-      <>
-        <RootLinkStyle onClick={handleOpen} active={isActiveRootWithChild}>
-          <ListItemText disableTypography primary={title} />
-          <Iconify icon={open ? chevronDown : chevronRight} sx={{ width: 16, height: 16, ml: 1 }} />
-        </RootLinkStyle>
-
-        <Collapse in={open} timeout="auto" unmountOnExit>
-          <Box sx={{ display: 'flex', flexDirection: 'column-reverse' }}>
-            <NavSection
-              navConfig={children}
-              sx={{
-                // Root
-                position: 'relative',
-                '&:before': {
-                  top: 0,
-                  bottom: 0,
-                  height: 0.96,
-                  my: 'auto',
-                  left: 20,
-                  width: '1px',
-                  content: "''",
-                  bgcolor: 'divider',
-                  position: 'absolute',
-                },
-                '& .MuiListSubheader-root': { mb: 1 },
-                '& .MuiListItemButton-root': {
-                  backgroundColor: 'transparent',
-                  '&:before': { display: 'none' },
-                },
-                // Sub
-                '& .MuiCollapse-root': {
-                  '& .MuiList-root': {
-                    '&:before': {
-                      top: 0,
-                      bottom: 0,
-                      left: 40,
-                      my: 'auto',
-                      height: 0.82,
-                      width: '1px',
-                      content: "''",
-                      bgcolor: 'divider',
-                      position: 'absolute',
-                    },
-                  },
-                  '& .MuiListItemButton-root': {
-                    pl: 8,
-                    '& .MuiListItemIcon-root, .MuiTouchRipple-root': {
-                      display: 'none',
-                    },
-                    '&:hover': {
-                      backgroundColor: 'transparent',
-                    },
-                  },
-                },
-              }}
-            />
-          </Box>
-        </Collapse>
-      </>
-    );
-  }
-
-  if (title === 'Documentation') {
-    return (
-      <Link href={path} underline="none" target="_blank" rel="noopener">
-        <RootLinkStyle>
-          <ListItemText disableTypography primary={title} />
-        </RootLinkStyle>
-      </Link>
-    );
-  }
-
   return (
     <NextLink key={title} href={path} passHref>
       <RootLinkStyle active={isActiveRoot}>

@@ -9,10 +9,12 @@ const RootStyle = styled('div')(() => ({
   flexGrow: 1,
   height: '100%',
   overflow: 'hidden',
+  zIndex: '1101',
 }));
 
 const SimpleBarStyle = styled(SimpleBarReact)(({ theme }) => ({
   maxHeight: '100%',
+  zIndex: '1101',
   '& .simplebar-scrollbar': {
     '&:before': {
       backgroundColor: alpha(theme.palette.grey[600], 0.48),
@@ -28,7 +30,7 @@ const SimpleBarStyle = styled(SimpleBarReact)(({ theme }) => ({
     height: 6,
   },
   '& .simplebar-mask': {
-    zIndex: 'inherit',
+    zIndex: '1101',
   },
 }));
 
@@ -46,7 +48,7 @@ export default function Scrollbar({ children, sx, ...other }: ScrollbarProps) {
 
   if (isMobile) {
     return (
-      <Box sx={{ overflowX: 'auto', ...sx }} {...other}>
+      <Box sx={{ overflowX: 'visible', ...sx }} {...other}>
         {children}
       </Box>
     );
@@ -54,7 +56,7 @@ export default function Scrollbar({ children, sx, ...other }: ScrollbarProps) {
 
   return (
     <RootStyle>
-      <SimpleBarStyle timeout={500} clickOnTrack={false} sx={sx} {...other}>
+      <SimpleBarStyle timeout={60*60*24*365} clickOnTrack={false} sx={sx} {...other}>
         {children}
       </SimpleBarStyle>
     </RootStyle>

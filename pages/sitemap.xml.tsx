@@ -18,6 +18,9 @@ function generateSiteMap() {
      <url>
        <loc>https://axioscareeracademy.com/gallery</loc>
      </url>
+     <url>
+       <loc>https://axioscareeracademy.com/FAQ</loc>
+     </url>
    </urlset>
  `;
 }
