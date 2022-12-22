@@ -8,6 +8,7 @@ const Routes = {
   contact: '/contact-us',
   gallery: "/gallery",
   FAQ: "/FAQ",
+  Blog: "/blog",
   // Common
   loginCover: '/auth/login-cover',
   registerCover: '/auth/register-cover',

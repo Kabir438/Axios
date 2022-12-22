@@ -20,4 +20,23 @@ export function urlFor(source: SanityImageSource, video?: boolean) {
   return builder.image(source).url()
 }
 
+const defaults = {nonTextBehavior: 'remove'}
+
+export function blocksToText(blocks: any[], opts = {}) {
+  try {
+    const options = Object.assign({}, defaults, opts)
+    return blocks
+      .map(block => {
+        if (block._type !== 'block' || !block.children) {
+          return options.nonTextBehavior === 'remove' ? '' : `[${block._type} block]`
+        }
+  
+        return block.children.map((child: any) => child.text).join('')
+      })
+      .join('\n\n')
+  } catch(e) {
+    return false
+  }
+}
+
 export default client;

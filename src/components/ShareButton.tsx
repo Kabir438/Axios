@@ -10,22 +10,30 @@ import { MenuItem, SxProps, Popover } from '@mui/material';
 // components
 import { Iconify } from './';
 import { IconButtonAnimate } from './animate';
+import { SocialLinks } from '../@types/socials';
+import { useRouter } from 'next/router';
 
 // ----------------------------------------------------------------------
 
 type LanguagePopoverProps = {
   sx?: SxProps;
+  links: SocialLinks;
 };
 
-export default function ShareButton({ sx }: LanguagePopoverProps) {
+export default function ShareButton({ sx, links }: LanguagePopoverProps) {
   const [open, setOpen] = useState<HTMLElement | null>(null);
+  const router = useRouter()
 
   const handleOpen = (event: React.MouseEvent<HTMLElement>) => {
     setOpen(event.currentTarget);
   };
 
-  const handleClose = () => {
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  const handleClose = (link?: string | {} | undefined) => {
     setOpen(null);
+    if(link) {
+      router.push(link)
+    }
   };
 
   const SOCIALS = [
@@ -49,7 +57,14 @@ export default function ShareButton({ sx }: LanguagePopoverProps) {
       icon: logoTwitter,
       socialColor: '#00AAEC',
     },
-  ];
+  ].map(i => {
+    const name = i.name.toLowerCase() as 'twitter' | 'linkedin' | 'instagram' | 'facebook';
+    const link = links[name];
+    return {
+      link,
+      ...i
+    }
+  });
 
   return (
     <>
@@ -76,7 +91,7 @@ export default function ShareButton({ sx }: LanguagePopoverProps) {
         }}
       >
         {SOCIALS.map((option) => (
-          <MenuItem key={option.name} onClick={handleClose} sx={{ typography: 'body3' }}>
+          <MenuItem key={option.name} onClick={() => handleClose(option.link)} sx={{ typography: 'body3' }}>
             <Iconify
               icon={option.icon}
               sx={{ width: 24, height: 24, mr: 2, color: option.socialColor }}
