@@ -73,7 +73,7 @@ export default function Footer() {
               title={
                 <div
                   onClick={() =>
-                    window.open("https://kabirchawla.com/?from=aura", "_blank")
+                    window.open("https://kabirchawla.com/?from=axios", "_blank")
                   }
                   style={{
                     placeItems: "center",
@@ -104,7 +104,7 @@ export default function Footer() {
                     color: "#2042fe",
                   }}
                   target="_blank"
-                  href="https://kabirchawla.com/?from=aura"
+                  href="https://kabirchawla.com/?from=axios"
                 >
                   kabirchawla.com
                 </a>
