@@ -58,13 +58,17 @@ export default function CarouselArrows({
     return (
       <Box {...other}>
         <Box className="arrow left" sx={{ ...style, left: 0 }}>
-          <ArrowStyle onClick={onPrevious}>{leftIcon(customIcon, isRTL)}</ArrowStyle>
+          <ArrowStyle sx={{
+            background: "black"
+          }} onClick={onPrevious}>{leftIcon(customIcon, isRTL)}</ArrowStyle>
         </Box>
 
         {children}
 
         <Box className="arrow right" sx={{ ...style, right: 0 }}>
-          <ArrowStyle onClick={onNext}>{rightIcon(customIcon, isRTL)}</ArrowStyle>
+          <ArrowStyle sx={{
+            background: "black"
+          }} onClick={onNext}>{rightIcon(customIcon, isRTL)}</ArrowStyle>
         </Box>
       </Box>
     );
