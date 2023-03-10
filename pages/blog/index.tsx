@@ -87,7 +87,6 @@ export default function ElearningBlogPage(props: Props) {
     } else {
       setBlogPosts(searchResult);
     }
-    console.log(searchResult, "change")
   }
   return (
     <Page title="Blog - E-Learning">

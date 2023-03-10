@@ -33,7 +33,6 @@ type FAQItems = {
 
 export default function FAQ(props: any) {
   const [expanded, setExpanded] = useState<string | false>(false);
-  console.log(props)
   const handleChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false);
   };

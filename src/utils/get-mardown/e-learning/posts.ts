@@ -15,7 +15,6 @@ export function getAllPosts() {
     const fileContents = fs.readFileSync(join(ELEARNING_POSTS_DIRECTORY, slug), 'utf-8');
 
     const { data: frontmatter } = matter(fileContents);
-    console.log(frontmatter)
     return {
       slug: slug.replace('.md', ''),
       frontmatter,

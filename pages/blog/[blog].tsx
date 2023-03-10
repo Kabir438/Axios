@@ -43,7 +43,6 @@ const portableTextComponents: Partial<PortableTextReactComponents> = {
     image: (props) => {
       const { value, isInline } = props;
       const { width, height } = getImageDimensions(value);
-      console.log(value);
       return (
         <Image
           sx={{
@@ -74,7 +73,6 @@ const portableTextComponents: Partial<PortableTextReactComponents> = {
 
   marks: {
     link: ({ children, value }) => {
-      console.log(value.href);
       const rel = !value.href.startsWith('/') ? 'noreferrer noopener' : undefined;
       return (
         <NextLink rel={rel} href={value.href}>
@@ -111,8 +109,6 @@ type Props = {
 };
 
 export default function ElearningPostPage({ post, posts: { blogPosts: posts } }: Props) {
-  console.log(post, posts);
-
   const { slug, title, description, author, tags, blogContent: content } = post;
 
   const contentString = blocksToText(content)
@@ -246,7 +242,6 @@ export const getStaticPaths = async () => {
   const blogSlugs = Array.from(
     new Set((blogPostData.blogPosts as { slug: string }[]).map((i) => i.slug))
   );
-  console.log(blogSlugs);
   return {
     paths: [
       ...blogSlugs.map((slug) => ({
@@ -300,7 +295,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }`;
   const blogPostData = await client.fetch(blogPostQuery);
   const blogData = await client.fetch(blogQuery);
-  console.log(blogData);
   return {
     props: {
       post: {

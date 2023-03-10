@@ -1,7 +1,7 @@
 // icons
 import quotesIcon from '@iconify/icons-carbon/quotes';
 // @mui
-import { Typography, Stack, Avatar } from '@mui/material';
+import { Stack, Avatar } from '@mui/material';
 import { testimonial } from '../../../../pages';
 // components
 import { Iconify, TextMaxLine } from '../../../components';

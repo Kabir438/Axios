@@ -29,7 +29,6 @@ export default function SocialsButton({
   sx,
   ...other
 }: SocialsButtonProps) {
-  console.log(links)
   const SOCIALS: {
     name: string;
     icon?: IconifyIcon;
@@ -98,11 +97,11 @@ export default function SocialsButton({
 
   return (
     <Stack direction="row" flexWrap="wrap" alignItems="center">
-      {SOCIALS.map((social) => {
+      {SOCIALS.map((social, i) => {
         const { name, icon, path, socialColor, IconComponent } = social;
         if(name === 'Google Business' && links.googleBusiness === null) return <></>
         return simple ? (
-          <Link key={name} target="_blank" href={path}>
+          <Link key={`${name}-${i}`} target="_blank" href={path}>
             <IconButton
               color="inherit"
               sx={{
