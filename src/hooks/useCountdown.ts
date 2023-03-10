@@ -43,4 +43,4 @@ export default function useCountdown(date: Date) {
 }
 
 // Usage
-// const countdown = useCountdown(new Date('07/07/2022 21:30'));
+// const countdown = useCountdown(new Date('07/07/2023 21:30'));

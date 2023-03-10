@@ -42,7 +42,7 @@ export default function Footer() {
           sx={{ py: 3, textAlign: "center" }}
         >
           <Typography variant="body3" sx={{ color: "text.secondary" }}>
-            © 2022. All rights reserved
+            © 2023. All rights reserved
           </Typography>
           <Stack direction="row" spacing={3} justifyContent="center">
             <Link

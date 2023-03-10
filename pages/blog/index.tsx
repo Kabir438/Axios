@@ -37,7 +37,7 @@ export type BlogPost = {
   category: string;
   coverImg: SanityImageSource;
   createdAt: string;
-  // "2022-12-20T05:47:04.421Z"
+  // "2023-12-20T05:47:04.421Z"
   description: string;
   slug: string;
   tags: string[];
