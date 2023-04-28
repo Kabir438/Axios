@@ -98,6 +98,7 @@ export default function Footer() {
             >
               <Typography variant="body1" sx={{ display: "inline" }}>
                 <a
+                  id="credit-link"
                   style={{
                     color: "#2042fe",
                   }}

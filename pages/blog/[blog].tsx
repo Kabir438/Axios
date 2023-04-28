@@ -185,8 +185,8 @@ export default function ElearningPostPage({ post, posts: { blogPosts: posts } }:
                 <Typography variant="subtitle2" sx={{ mr: 1 }}>
                   Tags:
                 </Typography>
-                {tags.map((tag) => (
-                  <Chip key={tag} size="small" label={tag} sx={{ m: 0.5 }} onClick={() => {}} />
+                {tags.map((tag, i) => (
+                  <Chip key={tag + i} size="small" label={tag} sx={{ m: 0.5 }} onClick={() => {}} />
                 ))}
               </Stack>
 

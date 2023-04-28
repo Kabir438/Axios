@@ -98,7 +98,7 @@ export default function TestimonialsElearning({ testimonials, title }: Props) {
               <Slider {...carouselContentSettings} asNavFor={carouselThumbnail} ref={carouselRef1}>
                 {testimonials.map((testimonial) => (
                     <TestimonialsElearningContentItem
-                      key={testimonial._id}
+                      key={testimonial._id + 3}
                       testimonial={testimonial}
                     />
                     // <h1 key={index}>hey</h1>
@@ -114,7 +114,7 @@ export default function TestimonialsElearning({ testimonials, title }: Props) {
                 >
                   {testimonials.map((testimonial, index) => (
                     <TestimonialsElearningThumbnailItem
-                      key={testimonial._id}
+                      key={testimonial._id + 2}
                       testimonial={testimonial}
                       isSelected={selected === index} 
                     />

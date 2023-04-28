@@ -15,6 +15,7 @@ import playIcon from '@iconify/icons-carbon/pause-filled';
 import pauseIcon from '@iconify/icons-carbon/play-filled-alt';
 import { useTheme } from '@emotion/react';
 import SEO from '../src/components/SEO';
+import React from 'react';
 
 // ----------------------------------------------------------------------
 
@@ -48,8 +49,8 @@ export default function ElearningContactUsPage(props: any) {
         }
       />
       <RootStyle>
-        {props.galleryPageSections.map((galleryPageSection: any) => (
-          <>
+        {props.galleryPageSections.map((galleryPageSection: any, i: any) => (
+          <React.Fragment key={`gallery-${i}`}>
             <Typography variant="h1" mt={10} mb={1.5} textAlign={'center'}>
               {galleryPageSection.gallerySectionTitle}
             </Typography>
@@ -76,7 +77,7 @@ export default function ElearningContactUsPage(props: any) {
                   </ImageListItem>
                 ))}
             </ImageList>
-          </>
+          </React.Fragment>
         ))}
       </RootStyle>
     </Page>

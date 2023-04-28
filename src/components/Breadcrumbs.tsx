@@ -38,8 +38,8 @@ export default function Breadcrumbs({
 
   const listDefault = links.map((link) => <LinkItem key={link.name} link={link} onDark={onDark} />);
 
-  const listActiveLast = links.map((link) => (
-    <div key={link.name}>
+  const listActiveLast = links.map((link, i) => (
+    <div key={link.name || "" + i}>
       {link.name !== currentLink ? (
         <LinkItem link={link} onDark={onDark} />
       ) : (
